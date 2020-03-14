@@ -35,6 +35,8 @@ async def on_member_join(member):
 @bot.event
 async def on_member_remove(member):
     channels = member.guild.text_channels
+    #TODO: add check for kick vs leaving
+    #detect_kicks = member.guild.audit_logs(user=member, action=discord.AuditLogAction.kick).flatten()
 
     for text_channel in channels:
         await text_channel.send(member.display_name + " has left the server")
@@ -46,6 +48,12 @@ async def on_member_ban(guild, user):
     for text_channel in channels:
         await text_channel.send("ALERT: " + user.display_name + " was banned from the server.")
 
+#greet server when joining
+@bot.event
+async def on_guild_join(guild):
+    channels = guild.text_channels
+    for text_channel in channels:
+        await text_channel.send("GREETINGS, SWEATY MEAT BAGS")
 #example command
 #ctx = context of command aka the server it came from
 #arg = everything said after the command
