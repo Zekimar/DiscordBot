@@ -47,10 +47,13 @@ class basic_commands(Cog):
 
     @command()
     async def nick(self, ctx, newnick):
-        member = ctx.guild.me
         await ctx.guild.me.edit(nick = newnick)
         await ctx.send("nickname changed to " + member.display_name)
-
+    @nick.error
+    async def nick_error(self, ctx, error):
+        if isinstance(error, MissingRequiredArgument):
+            await ctx.send("ERROR: missing argument.")
+    
 class audit_log(Cog):
     def __init__(self, bot):
         self.bot = bot
