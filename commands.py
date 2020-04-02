@@ -45,6 +45,12 @@ class basic_commands(Cog):
         else:
             await ctx.send("tails!")
 
+    @command()
+    async def nick(self, ctx, newnick):
+        member = ctx.guild.me
+        await ctx.guild.me.edit(nick = newnick)
+        await ctx.send("nickname changed to " + member.display_name)
+
 class audit_log(Cog):
     def __init__(self, bot):
         self.bot = bot
