@@ -1,4 +1,4 @@
-# KevinBot
+# Discord Bot
 
 This is a bot I am working on as a side project. It uses the discord.py API (https://discordpy.readthedocs.io/en/latest/index.html#)
 
