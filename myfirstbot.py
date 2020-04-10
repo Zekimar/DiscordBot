@@ -2,12 +2,12 @@ import discord
 import asyncio
 from random import randint
 from discord.ext.commands import Bot
-from commands import basic_commands, audit_log
+from commands import basic_commands, server_info
 file = open('secret_token.txt', 'r')
 token = file.readline().rstrip()
 bot = Bot(command_prefix="!")
 bot.add_cog(basic_commands(Bot))
-bot.add_cog(audit_log(Bot))
+bot.add_cog(server_info(Bot))
 #bot = discord.Client()
 info = "```This Bot was created by Kevin Good using Python with the discord.py API```"
 
@@ -23,7 +23,7 @@ async def on_ready():
     #list servers the bot is a part of in command prompt
     for server in bot.guilds:
         print(server.name)
-
+        await server.channels[0].send("KevinBot is online. Type !help for list of commands")
 #notify text channels when someone joins the server
 @bot.event
 async def on_member_join(member):

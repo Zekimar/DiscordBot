@@ -53,20 +53,15 @@ class basic_commands(Cog):
     async def nick_error(self, ctx, error):
         if isinstance(error, MissingRequiredArgument):
             await ctx.send("ERROR: missing argument.")
-    
-class audit_log(Cog):
+
+class server_info(Cog):
     def __init__(self, bot):
         self.bot = bot
 
-    #get all actions in audit log involving a certain role
-    #string should mention the role involved
     @command()
-    async def role_updates(self, ctx, role):
-        msg = ""
-        #return all role_update actions from the audit log and flatten() them into a list
-        audit_log = await ctx.message.guild.audit_logs(action=discord.AuditLogAction.role_update).flatten()
-        #check if the role being updated is the same as the input
-        #entries in the audit log are discord.auditlogentry objects
-        for item in audit_log:
-            if item.target.mention == role:
-                print(item)
+    async def emojis(self, ctx):
+        emojis = ctx.guild.emojis
+        message = "server emojis:\n"
+        for emoji in emojis:
+            message += "<:" + emoji.name + ":" + str(emoji.id) + ">"
+        await ctx.send(message)
