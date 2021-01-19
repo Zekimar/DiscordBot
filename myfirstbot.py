@@ -3,13 +3,19 @@ import asyncio
 from random import randint
 from discord.ext.commands import Bot
 from commands import basic_commands, server_info
+info = "```This Bot was created by Kevin Good using Python with the discord.py API```"
+intents = discord.Intents.default()
+intents.members = True
+intents.guilds = True
+intents.bans = True
+intents.messages = True
 file = open('secret_token.txt', 'r')
 token = file.readline().rstrip()
-bot = Bot(command_prefix="!")
+bot = Bot(command_prefix="!", description=info, intents=intents)
 bot.add_cog(basic_commands(Bot))
 bot.add_cog(server_info(Bot))
 #bot = discord.Client()
-info = "```This Bot was created by Kevin Good using Python with the discord.py API```"
+
 
 #when the bot has finished logging in/connecting, display a greeting message to
 #all servers it is currently in.
