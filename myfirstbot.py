@@ -60,12 +60,5 @@ async def on_guild_join(guild):
     channels = guild.text_channels
     for text_channel in channels:
         await text_channel.send("GREETINGS, SWEATY MEAT BAGS")
-#example command
-#ctx = context of command aka the server it came from
-#arg = everything said after the command
-# * means give the rest of the text as a single argument
-@bot.command()
-async def mirror(ctx, *, arg):
-    await ctx.send(arg)
 
 bot.run(token)

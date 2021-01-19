@@ -10,6 +10,14 @@ class basic_commands(Cog):
     def __init__(self, bot):
         self.bot = bot
 
+    #example command
+    #ctx = context of command aka the server it came from
+    #arg = everything said after the command
+    # * means give the rest of the text as a single argument
+    @bot.command()
+    async def mirror(ctx, *, arg):
+        await ctx.send(arg)
+
     #@command denotes that the following function is a command for the bot
     #ctx = context of message
     #ctx.send("PONG!") will send "PONG!" to the server the command originated from
