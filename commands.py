@@ -14,9 +14,9 @@ class basic_commands(Cog):
     #ctx = context of command aka the server it came from
     #arg = everything said after the command
     # * means give the rest of the text as a single argument
-    @bot.command()
-    async def mirror(ctx, *, arg):
-        await ctx.send(arg)
+    @command()
+    async def mirror(self, server, *, arg):
+        await server.send(arg)
 
     #@command denotes that the following function is a command for the bot
     #ctx = context of message
