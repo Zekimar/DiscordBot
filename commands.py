@@ -18,9 +18,6 @@ class basic_commands(Cog):
     async def mirror(self, context, *, arg):
         await context.send(arg)
 
-    #@command denotes that the following function is a command for the bot
-    #context = context of message
-    #context.send("PONG!") will send "PONG!" to the context the command originated from
     @command()
     async def ping(self, context):
         await context.send("PONG!")
@@ -33,13 +30,11 @@ class basic_commands(Cog):
     async def info(self, context):
         await context.send(info);
 
-    #max: int is a user defined argument for this command
     #defaults to 6
     @command()
     async def roll(self, context, max = 6):
         ans = randint(1, max)
         await context.send(ans)
-    #commands come with local error handlers
     @roll.error
     async def roll_error(self, context, error):
         if isinstance(error, BadArgument):

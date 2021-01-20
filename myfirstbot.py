@@ -30,19 +30,17 @@ async def on_ready():
     for server in bot.guilds:
         print(server.name)
         await server.channels[0].send("KevinBot is online. Type !help for list of commands")
-#notify text channels when someone joins the server
+
 @bot.event
 async def on_member_join(member):
     channels = member.guild.text_channels
     for text_channel in channels:
         await text_channel.send(member.display_name + " has joined the server")
 
-#notify text channels when someone leaves the server
 @bot.event
 async def on_member_remove(member):
     channels = member.guild.text_channels
     #TODO: add check for kick vs leaving
-    #detect_kicks = member.guild.audit_logs(user=member, action=discord.AuditLogAction.kick).flatten()
 
     for text_channel in channels:
         await text_channel.send(member.display_name + " has left the server")
