@@ -33,9 +33,7 @@ async def on_ready():
 
 @bot.event
 async def on_member_join(member):
-    channels = member.guild.text_channels
-    for text_channel in channels:
-        await text_channel.send(member.display_name + " has joined the server")
+    await member.send("Welcome to " + member.guild.name + "!")
 
 @bot.event
 async def on_member_remove(member):
