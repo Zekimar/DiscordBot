@@ -57,7 +57,7 @@ class basic_commands(Cog):
         if isinstance(error, MissingRequiredArgument):
             await context.send("ERROR: missing argument.")
 
-class context_info(Cog):
+class server_info(Cog):
     def __init__(self, bot):
         self.bot = bot
 

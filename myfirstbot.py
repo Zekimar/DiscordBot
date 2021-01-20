@@ -41,16 +41,14 @@ async def on_member_join(member):
 async def on_member_remove(member):
     channels = member.guild.text_channels
     #TODO: add check for kick vs leaving
-
-    for text_channel in channels:
-        await text_channel.send(member.display_name + " has left the server")
-
-#notify text channels when someone gets banned from the server
-@bot.event
-async def on_member_ban(guild, user):
-    channels = guild.text_channels
-    for text_channel in channels:
-        await text_channel.send("ALERT: " + user.display_name + " was banned from the server.")
+    guild = member.guild
+    try:
+        await guild.fetch_ban(member)
+        for text_channel in channels:
+            await text_channel.send("ALERT: " + member.display_name + " was banned from the server.")
+    except discord.errors.NotFound:
+        for text_channel in channels:
+            await text_channel.send(member.display_name + " has left the server")
 
 #greet server when joining
 @bot.event
