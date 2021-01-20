@@ -5,7 +5,7 @@ from discord.ext.commands import *
 
 info = "```This Bot was created by Kevin Good using Python with the discord.py API```"
 
-#a cog is a class of bot commands according to the API
+#a cog is a class of bot commands
 class basic_commands(Cog):
     def __init__(self, bot):
         self.bot = bot
