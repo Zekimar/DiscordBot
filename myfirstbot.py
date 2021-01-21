@@ -4,6 +4,7 @@ from discord.ext.commands import Bot, CommandNotFound
 
 from commands import basic_commands, server_info
 info = "```This Bot was created by Kevin Good using Python with the discord.py API```"
+#allows the bot to access these types of data
 intents = discord.Intents.default()
 intents.members = True
 intents.guilds = True
@@ -30,10 +31,12 @@ async def on_ready():
         print(server.name)
         await server.channels[0].send("KevinBot is online. Type !help for list of commands")
 
+#sends a DM greeting to whoever joined the server 
 @bot.event
 async def on_member_join(member):
     await member.send("Welcome to " + member.guild.name + "!")
 
+#NOTE: this will also trigger when someone is banned, which is why we check if they were banned
 @bot.event
 async def on_member_remove(member):
     channels = member.guild.text_channels
@@ -45,7 +48,7 @@ async def on_member_remove(member):
     except discord.errors.NotFound:
         await channels[0].send(member.display_name + " has left/been kicked from the server")
 
-#greet server when joining
+#greet server(s) when joining
 @bot.event
 async def on_guild_join(guild):
     channels = guild.text_channels

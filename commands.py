@@ -48,6 +48,7 @@ class basic_commands(Cog):
         else:
             await context.send("tails!")
 
+    #change nickname and error check
     @command()
     async def nick(self, context, newnick):
         await context.guild.me.edit(nick = newnick)
