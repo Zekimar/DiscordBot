@@ -20,7 +20,7 @@ class basic_commands(Cog):
 
     @command()
     async def ping(self, context):
-        await context.send("PONG!")
+        await context.message.reply("PONG!")
 
     @command()
     async def test(self, context):
