@@ -68,3 +68,4 @@ class server_info(Cog):
         for emoji in emojis:
             message += "<:" + emoji.name + ":" + str(emoji.id) + ">"
         await context.send(message)
+        await context.send("There are " + context.guild.emoji_limit - len(emojis) + " emoji slots left")

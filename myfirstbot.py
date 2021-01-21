@@ -1,6 +1,5 @@
 import discord
 import asyncio
-from random import randint
 from discord.ext.commands import Bot
 from commands import basic_commands, server_info
 info = "```This Bot was created by Kevin Good using Python with the discord.py API```"
@@ -14,10 +13,9 @@ token = file.readline().rstrip()
 bot = Bot(command_prefix="!", description=info, intents=intents)
 bot.add_cog(basic_commands(Bot))
 bot.add_cog(server_info(Bot))
-#bot = discord.Client()
 
 
-#when the bot has finished logging in/connecting, display a greeting message to
+#when the bot has finished logging in & connecting, display a greeting message to
 #all servers it is currently in.
 @bot.event
 async def on_ready():
@@ -44,8 +42,7 @@ async def on_member_remove(member):
         await guild.fetch_ban(member)
         await channels[0].send("ALERT: " + member.display_name + " was banned from the server.")
     except discord.errors.NotFound:
-        for text_channel in channels:
-        await channels[0].send(member.display_name + " has left the server")
+        await channels[0].send(member.display_name + " has left/been kicked from the server")
 
 #greet server when joining
 @bot.event
