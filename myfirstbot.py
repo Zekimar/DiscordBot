@@ -1,6 +1,7 @@
 import discord
 import asyncio
-from discord.ext.commands import Bot
+from discord.ext.commands import Bot, CommandNotFound
+
 from commands import basic_commands, server_info
 info = "```This Bot was created by Kevin Good using Python with the discord.py API```"
 intents = discord.Intents.default()
@@ -49,5 +50,10 @@ async def on_member_remove(member):
 async def on_guild_join(guild):
     channels = guild.text_channels
     await channels[0].send("GREETINGS, SWEATY MEAT BAGS")
+
+@bot.event
+async def on_command_error(context, error):
+    if isinstance(error, CommandNotFound):
+        await context.message.reply("ERROR! Command not found.")
 
 bot.run(token)
