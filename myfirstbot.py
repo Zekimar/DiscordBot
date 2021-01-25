@@ -3,7 +3,6 @@ import asyncio
 from discord.ext.commands import Bot, CommandNotFound
 
 from commands import basic_commands
-from server_info import server_info
 info = "```This Bot was created by Kevin Good using Python with the discord.py API```"
 #allows the bot to access these types of data
 intents = discord.Intents.default()
@@ -15,9 +14,6 @@ file = open('secret_token.txt', 'r')
 token = file.readline().rstrip()
 bot = Bot(command_prefix="!", description=info, intents=intents)
 bot.add_cog(basic_commands(Bot))
-bot.add_cog(server_info(Bot))
-
-
 
 
 #when the bot has finished logging in & connecting, display a greeting message to
