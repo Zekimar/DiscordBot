@@ -43,7 +43,6 @@ async def on_member_join(member):
 @bot.event
 async def on_member_remove(member):
     channels = member.guild.text_channels
-    #TODO: add check for kick vs leaving
     guild = member.guild
     try:
         await guild.fetch_ban(member)
