@@ -66,3 +66,9 @@ class basic_commands(Cog):
         for emoji in emojis:
             message += "<:" + emoji.name + ":" + str(emoji.id) + ">"
         await context.send(message)
+
+    #displays how long the user @'d in the message has been in the server for
+    @command()
+    async def joined_when(self, context):
+        user = context.message.mentions[0]
+        await context.send(user.display_name + " has been in the server since " + user.joined_at.__str__())
